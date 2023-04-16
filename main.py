@@ -18,22 +18,25 @@ screen.update()
 def go_up():
     
     x,y=paddle.position()
-    print(x,y)
-    paddle.goto(x,y+20)
-    screen.update()
+    if y<265:
+        paddle.goto(x,y+20)
+
 
 def go_down():
     
     x,y=paddle.position()
-    print(x,y)
-    paddle.goto(x,y-20)
-    screen.update()
+    if y>-260:
+        paddle.goto(x,y-20)
+
 
 
 screen.listen()
 screen.onkeypress(go_up,"Up")
 screen.onkeypress(go_down,"Down")
 
+game_over=False
 
+while not game_over:
+    screen.update()
 
 screen.exitonclick()
