@@ -8,22 +8,12 @@ class Paddle(Turtle):
         self.paddle.penup()
         self.paddle.goto(pos)
     
-    def right_go_up(self):
+    def go_up(self):
         x,y=self.paddle.position()
         if y<265:
             self.paddle.goto(x,y+20)
 
-    def right_go_down(self):
-        x,y=self.paddle.position()
-        if y>-260:
-            self.paddle.goto(x,y-20)
-    
-    def left_go_up(self):
-        x,y=self.paddle.position()
-        if y<265:
-            self.paddle.goto(x,y+20)
-
-    def left_go_down(self):
+    def go_down(self):
         x,y=self.paddle.position()
         if y>-260:
             self.paddle.goto(x,y-20)
