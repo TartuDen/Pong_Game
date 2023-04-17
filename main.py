@@ -1,4 +1,7 @@
-from turtle import Turtle, Screen
+from turtle import Screen
+from paddle import Paddle
+from the_ball import Ball
+
 
 screen=Screen()
 screen.bgcolor("black")
@@ -7,35 +10,31 @@ screen.title("PONG GAME.")
 screen.tracer(0)
 
 
-paddle=Turtle()
-paddle.shape("square")
-paddle.color("white")
-paddle.shapesize(3,0.5)
-paddle.penup()
-paddle.goto(350,0)
-screen.update()
+r_paddle=Paddle((350,0))
+l_paddle=Paddle((-350,0))
+ball=Ball()
 
-def go_up():
-    
-    x,y=paddle.position()
+
+
+
+def left_go_up():
+    x,y=l_paddle.paddle.position()
     if y<265:
-        paddle.goto(x,y+20)
+        l_paddle.paddle.goto(x,y+20)
 
-
-def go_down():
-    
-    x,y=paddle.position()
+def left_go_down():
+    x,y=l_paddle.paddle.position()
     if y>-260:
-        paddle.goto(x,y-20)
-
-
+        l_paddle.paddle.goto(x,y-20)
 
 screen.listen()
-screen.onkeypress(go_up,"Up")
-screen.onkeypress(go_down,"Down")
+screen.onkeypress(r_paddle.right_go_up,"Up")
+screen.onkeypress(r_paddle.right_go_down,"Down")
+
+screen.onkeypress(l_paddle.left_go_up,"w")
+screen.onkeypress(l_paddle.left_go_down,"s")
 
 game_over=False
-
 while not game_over:
     screen.update()
 
