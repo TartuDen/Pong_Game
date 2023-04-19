@@ -1,21 +1,29 @@
 from turtle import Turtle
+import random
+import time
 
 class Ball(Turtle):
-    def __init__(self, screen):
+    def __init__(self):
         self.ballTurtle=Turtle()
         self.ballTurtle.shape("square")
         self.ballTurtle.color("green")
         self.ballTurtle.penup()
         self.ballTurtle.goto(0,0)
-        self.screen=screen
+        self.x_move=10
+        self.y_move=10   
+ 
 
-        self.step_x=800/100
-        self.step_y=600/100
-        self.screen.tracer(1)
-        
+    def move(self):            
+        x,y=self.ballTurtle.position()
+        self.ballTurtle.goto(x+self.x_move,y+self.y_move)
 
-    def ball_start(self):
-        while self.ballTurtle.position()[0] < 400 and self.ballTurtle.position()[1] < 300:
-            x,y=self.ballTurtle.position()
-            self.ballTurtle.goto(x+self.step_x,y+self.step_y)
+    def bounce(self):
+        self.y_move=-self.y_move
+    
+    def paddle_bounce(self):
+        self.x_move=-self.x_move
+
+
+
+
 
